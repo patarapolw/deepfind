@@ -3,7 +3,7 @@ export default function deepfind (o: any, cond: string | number | null | undefin
 }
 
 function deepfindHistory (o: any, cond: string | number | null | undefined | Record<string, any>, last: any) {
-  const result: Record<string, any>[] = []
+  const result: (Record<string, any> | any[])[] = []
 
   if (o === cond) {
     result.push(last)

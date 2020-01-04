@@ -38,6 +38,35 @@ Output
 ]
 ```
 
+## How I actually use
+
+In my `nuxt.config.js`
+
+```javascript
+import deepfind from '@patarapolw/deepfind'
+import showdown from 'showdown'
+
+const mdConverter = new showdown.Converter()
+
+export default {
+  build: {
+    /*
+    ** You can extend webpack config here
+    */
+    extend (config, ctx) {
+      for (const r of deepfind(config, 'pug-plain-loader')) {
+        if (!Array.isArray(r)) {
+          r.options = r.options || {}
+          r.options.filters = {
+            markdown: (s: string) => mdConverter.makeHtml(s)
+          }
+        }
+      }
+    }
+  }
+}
+```
+
 ## Installation
 
 Apparently, `deepfind` is already taken. I have to use `@patarapolw/deepfind`

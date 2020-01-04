@@ -14,12 +14,36 @@ console.log(deepfind(config, { loader: 'pug-plain-loader' }))
 console.log(deepfind(config, 'raw-loader'))
 ```
 
+Output
+
+```javascript
+[
+  {
+    loader: 'pug-plain-loader',
+    options: {}
+  },
+  {
+    loader: 'pug-plain-loader',
+    options: {}
+  }
+]
+[
+  [
+    'raw-loader',
+    {
+      loader: 'pug-plain-loader',
+      options: {}
+    }
+  ]
+]
+```
+
 ## Installation
 
 Apparently, `deepfind` is already taken. I have to use `@patarapolw/deepfind`
 
 <!-- markdownlint-disable -->
 ```
-npm i @patarapolw/deepfind
-# Or yarn add @patarapolw/deepfind
+yarn add @patarapolw/deepfind
+# Or npm i @patarapolw/deepfind
 ```

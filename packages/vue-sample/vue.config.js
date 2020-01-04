@@ -1,8 +1,8 @@
-const yaml = require('js-yaml')
-const fs = require('fs')
+const deepfind = require('@patarapolw/deepfind').default
 
 module.exports = {
   configureWebpack: (config) => {
-    fs.writeFileSync('webpack.config.yaml', yaml.dump(config))
+    console.log(deepfind(config, { loader: 'pug-plain-loader' }))
+    console.log(deepfind(config, 'pug-plain-loader'))
   }
 }

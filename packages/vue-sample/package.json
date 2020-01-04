@@ -7,7 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "js-yaml": "^3.13.1",
+    "@patarapolw/deepfind": "*",
     "vue": "^2.6.10",
     "vue-cli-plugin-pug": "^1.0.7"
   },

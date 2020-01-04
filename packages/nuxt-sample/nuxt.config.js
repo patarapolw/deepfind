@@ -1,5 +1,4 @@
-import fs from 'fs'
-import yaml from 'js-yaml'
+import deepfind from '@patarapolw/deepfind'
 
 export default {
   mode: 'universal',
@@ -49,7 +48,8 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-      fs.writeFileSync('webpack.config.yaml', yaml.dump(config))
+      console.log(deepfind(config, { loader: 'pug-plain-loader' }))
+      console.log(deepfind(config, 'pug-plain-loader'))
     }
   }
 }

@@ -1,4 +1,4 @@
-# deepfind
+# @patarapolw/deepfind
 
 Deep find a primitive or a plain Object inside an Array or a plain Object. Always return a Object (an Array or a plain Object), so that the Object (an Array or a plain Object) can be tweaked.
 

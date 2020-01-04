@@ -49,7 +49,7 @@ export default {
     */
     extend (config, ctx) {
       console.log(deepfind(config, { loader: 'pug-plain-loader' }))
-      console.log(deepfind(config, 'pug-plain-loader'))
+      console.log(deepfind(config, 'raw-loader'))
     }
   }
 }

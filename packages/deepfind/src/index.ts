@@ -1,14 +1,18 @@
 export default function deepfind (o: any, cond: string | number | null | undefined | Record<string, any>) {
-  const result: any[] = []
+  return deepfindHistory(o, cond, {})
+}
 
-  if (Array.isArray(o)) {
+function deepfindHistory (o: any, cond: string | number | null | undefined | Record<string, any>, last: any) {
+  const result: Record<string, any>[] = []
+
+  if (o === cond) {
+    result.push(last)
+  } if (Array.isArray(o)) {
     for (const a of o) {
-      if (Array.isArray(a) || makePlainObject(a)) {
-        result.push(...deepfind(a, cond))
-      } else {
-        if (a === cond) {
-          result.push(o)
-        }
+      if (a && typeof a === 'object') {
+        result.push(...deepfindHistory(a, cond, o))
+      } else if (a === cond) {
+        result.push(o)
       }
     }
   } else {
@@ -20,7 +24,7 @@ export default function deepfind (o: any, cond: string | number | null | undefin
         result.push(o1)
       } else {
         for (const a of Object.values(o1)) {
-          result.push(...deepfind(a, cond))
+          result.push(...deepfindHistory(a, cond, o))
         }
       }
     }

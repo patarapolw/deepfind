@@ -71,8 +71,7 @@ export default {
 
 Apparently, `deepfind` is already taken. I have to use `@patarapolw/deepfind`
 
-<!-- markdownlint-disable -->
-```
+```sh
 yarn add @patarapolw/deepfind
 # Or npm i @patarapolw/deepfind
 ```

@@ -1,0 +1,737 @@
+name: server
+mode: development
+devtool: cheap-module-source-map
+optimization:
+  splitChunks: false
+  minimizer:
+    - options:
+        test: !<tag:yaml.org,2002:js/regexp> /\.m?js(\?.*)?$/i
+        chunkFilter: !<tag:yaml.org,2002:js/function> () => true
+        warningsFilter: !<tag:yaml.org,2002:js/function> () => true
+        extractComments:
+          condition: some
+          filename: LICENSES
+        sourceMap: !<tag:yaml.org,2002:js/undefined> ''
+        cache: false
+        cacheKeys: !<tag:yaml.org,2002:js/function> defaultCacheKeys => defaultCacheKeys
+        parallel: true
+        include: !<tag:yaml.org,2002:js/undefined> ''
+        exclude: !<tag:yaml.org,2002:js/undefined> ''
+        minify: !<tag:yaml.org,2002:js/undefined> ''
+        terserOptions:
+          compress:
+            ecma: !<tag:yaml.org,2002:js/undefined> ''
+          mangle:
+            reserved:
+              - html
+              - body
+              - base
+              - head
+              - link
+              - meta
+              - style
+              - title
+              - address
+              - article
+              - aside
+              - footer
+              - header
+              - h1
+              - h2
+              - h3
+              - h4
+              - h5
+              - h6
+              - hgroup
+              - nav
+              - section
+              - div
+              - dd
+              - dl
+              - dt
+              - figcaption
+              - figure
+              - picture
+              - hr
+              - img
+              - li
+              - main
+              - ol
+              - p
+              - pre
+              - ul
+              - a
+              - b
+              - abbr
+              - bdi
+              - bdo
+              - br
+              - cite
+              - code
+              - data
+              - dfn
+              - em
+              - i
+              - kbd
+              - mark
+              - q
+              - rp
+              - rt
+              - rtc
+              - ruby
+              - s
+              - samp
+              - small
+              - span
+              - strong
+              - sub
+              - sup
+              - time
+              - u
+              - var
+              - wbr
+              - area
+              - audio
+              - map
+              - track
+              - video
+              - embed
+              - object
+              - param
+              - source
+              - canvas
+              - script
+              - noscript
+              - del
+              - ins
+              - caption
+              - col
+              - colgroup
+              - table
+              - thead
+              - tbody
+              - td
+              - th
+              - tr
+              - button
+              - datalist
+              - fieldset
+              - form
+              - input
+              - label
+              - legend
+              - meter
+              - optgroup
+              - option
+              - output
+              - progress
+              - select
+              - textarea
+              - details
+              - dialog
+              - menu
+              - menuitem
+              - summary
+              - content
+              - element
+              - shadow
+              - template
+              - blockquote
+              - iframe
+              - tfoot
+              - svg
+              - animate
+              - circle
+              - clippath
+              - cursor
+              - defs
+              - desc
+              - ellipse
+              - filter
+              - font-face
+              - foreignObject
+              - g
+              - glyph
+              - image
+              - line
+              - marker
+              - mask
+              - missing-glyph
+              - path
+              - pattern
+              - polygon
+              - polyline
+              - rect
+              - switch
+              - symbol
+              - text
+              - textpath
+              - tspan
+              - use
+              - view
+              - slot
+              - component
+output:
+  path: >-
+    /Users/patarapolw/GitHubProjects/deepfind/packages/nuxt-sample/.nuxt/dist/server
+  filename: '[name].js'
+  futureEmitAssets: true
+  chunkFilename: '[name].js'
+  publicPath: /_nuxt/
+performance:
+  maxEntrypointSize: 1024000
+  hints: false
+module:
+  rules:
+    - test: !<tag:yaml.org,2002:js/regexp> /\.vue$/i
+      loader: vue-loader
+      options:
+        transformAssetUrls:
+          video: src
+          source: src
+          object: src
+          embed: src
+        productionMode: false
+    - test: !<tag:yaml.org,2002:js/regexp> /\.pug$/i
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /^\?vue/i
+          use:
+            - loader: pug-plain-loader
+              options: &ref_0 {}
+        - use:
+            - raw-loader
+            - loader: pug-plain-loader
+              options: *ref_0
+    - test: !<tag:yaml.org,2002:js/regexp> /\.jsx?$/i
+      exclude: !<tag:yaml.org,2002:js/function> |-
+        (file) => {
+                  file = file.split('node_modules', 2)[1];
+
+                  // not exclude files outside node_modules
+                  if (!file) {
+                    return false
+                  }
+
+                  // item in transpile can be string or regex object
+                  return !this.modulesToTranspile.some(module => module.test(file))
+                }
+      use:
+        - loader: >-
+            /Users/patarapolw/GitHubProjects/deepfind/node_modules/babel-loader/lib/index.js
+          options:
+            configFile: false
+            babelrc: false
+            cacheDirectory: true
+            envName: server
+            presets:
+              - - >-
+                  /Users/patarapolw/GitHubProjects/deepfind/node_modules/@nuxt/babel-preset-app/src/index.js
+                - {}
+    - test: !<tag:yaml.org,2002:js/regexp> /\.css$/i
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /module/
+          use:
+            - loader: vue-style-loader
+              options: &ref_1
+                sourceMap: true
+            - loader: css-loader
+              options: &ref_3
+                modules:
+                  localIdentName: '[local]_[hash:base64:5]'
+                sourceMap: true
+                importLoaders: 2
+                onlyLocals: false
+            - &ref_2
+              loader: postcss-loader
+              options:
+                sourceMap: true
+                plugins:
+                  - !<tag:yaml.org,2002:js/function> |-
+                    function(styles, result) {
+                        const state = {
+                          importedFiles: {},
+                          hashFiles: {},
+                        }
+
+                        if (styles.source && styles.source.input && styles.source.input.file) {
+                          state.importedFiles[styles.source.input.file] = {}
+                        }
+
+                        if (options.plugins && !Array.isArray(options.plugins)) {
+                          throw new Error("plugins option must be an array")
+                        }
+
+                        return parseStyles(result, styles, options, state, []).then(bundle => {
+                          applyRaws(bundle)
+                          applyMedia(bundle)
+                          applyStyles(bundle, styles)
+                        })
+                      }
+                  - !<tag:yaml.org,2002:js/function> |-
+                    function(styles, result) {
+                            const opts = result.opts;
+                            const from = opts.from ? path.dirname(opts.from) : '.';
+                            const to = opts.to ? path.dirname(opts.to) : from;
+
+                            styles.walkDecls((decl) =>
+                                declProcessor(from, to, options, result, decl)
+                            );
+                        }
+                  - !<tag:yaml.org,2002:js/function> |-
+                    (root, result) => {
+                        // polyfills run in execution order
+                        const polyfills = supportedFeatures.reduce((promise, feature) => promise.then(() => feature.plugin(result.root, result)), Promise.resolve()).then(() => stagedAutoprefixer(result.root, result)).then(() => {
+                          if (Object(opts).exportTo) {
+                            writeToExports(sharedOpts.exportTo, opts.exportTo);
+                          }
+                        });
+                        return polyfills;
+                      }
+                order: presetEnvAndCssnanoLast
+        - use:
+            - loader: vue-style-loader
+              options: *ref_1
+            - loader: css-loader
+              options: &ref_4
+                sourceMap: true
+                importLoaders: 2
+                onlyLocals: false
+            - *ref_2
+    - test: !<tag:yaml.org,2002:js/regexp> /\.p(ost)?css$/i
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /module/
+          use:
+            - loader: vue-style-loader
+              options: *ref_1
+            - loader: css-loader
+              options: *ref_3
+            - &ref_5
+              loader: postcss-loader
+              options:
+                sourceMap: true
+                plugins:
+                  - !<tag:yaml.org,2002:js/function> |-
+                    function(styles, result) {
+                        const state = {
+                          importedFiles: {},
+                          hashFiles: {},
+                        }
+
+                        if (styles.source && styles.source.input && styles.source.input.file) {
+                          state.importedFiles[styles.source.input.file] = {}
+                        }
+
+                        if (options.plugins && !Array.isArray(options.plugins)) {
+                          throw new Error("plugins option must be an array")
+                        }
+
+                        return parseStyles(result, styles, options, state, []).then(bundle => {
+                          applyRaws(bundle)
+                          applyMedia(bundle)
+                          applyStyles(bundle, styles)
+                        })
+                      }
+                  - !<tag:yaml.org,2002:js/function> |-
+                    function(styles, result) {
+                            const opts = result.opts;
+                            const from = opts.from ? path.dirname(opts.from) : '.';
+                            const to = opts.to ? path.dirname(opts.to) : from;
+
+                            styles.walkDecls((decl) =>
+                                declProcessor(from, to, options, result, decl)
+                            );
+                        }
+                  - !<tag:yaml.org,2002:js/function> |-
+                    (root, result) => {
+                        // polyfills run in execution order
+                        const polyfills = supportedFeatures.reduce((promise, feature) => promise.then(() => feature.plugin(result.root, result)), Promise.resolve()).then(() => stagedAutoprefixer(result.root, result)).then(() => {
+                          if (Object(opts).exportTo) {
+                            writeToExports(sharedOpts.exportTo, opts.exportTo);
+                          }
+                        });
+                        return polyfills;
+                      }
+                order: presetEnvAndCssnanoLast
+        - use:
+            - loader: vue-style-loader
+              options: *ref_1
+            - loader: css-loader
+              options: *ref_4
+            - *ref_5
+    - test: !<tag:yaml.org,2002:js/regexp> /\.less$/i
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /module/
+          use:
+            - loader: vue-style-loader
+              options: *ref_1
+            - loader: css-loader
+              options: *ref_3
+            - &ref_6
+              loader: postcss-loader
+              options:
+                sourceMap: true
+                plugins:
+                  - !<tag:yaml.org,2002:js/function> |-
+                    function(styles, result) {
+                        const state = {
+                          importedFiles: {},
+                          hashFiles: {},
+                        }
+
+                        if (styles.source && styles.source.input && styles.source.input.file) {
+                          state.importedFiles[styles.source.input.file] = {}
+                        }
+
+                        if (options.plugins && !Array.isArray(options.plugins)) {
+                          throw new Error("plugins option must be an array")
+                        }
+
+                        return parseStyles(result, styles, options, state, []).then(bundle => {
+                          applyRaws(bundle)
+                          applyMedia(bundle)
+                          applyStyles(bundle, styles)
+                        })
+                      }
+                  - !<tag:yaml.org,2002:js/function> |-
+                    function(styles, result) {
+                            const opts = result.opts;
+                            const from = opts.from ? path.dirname(opts.from) : '.';
+                            const to = opts.to ? path.dirname(opts.to) : from;
+
+                            styles.walkDecls((decl) =>
+                                declProcessor(from, to, options, result, decl)
+                            );
+                        }
+                  - !<tag:yaml.org,2002:js/function> |-
+                    (root, result) => {
+                        // polyfills run in execution order
+                        const polyfills = supportedFeatures.reduce((promise, feature) => promise.then(() => feature.plugin(result.root, result)), Promise.resolve()).then(() => stagedAutoprefixer(result.root, result)).then(() => {
+                          if (Object(opts).exportTo) {
+                            writeToExports(sharedOpts.exportTo, opts.exportTo);
+                          }
+                        });
+                        return polyfills;
+                      }
+                order: presetEnvAndCssnanoLast
+            - &ref_7
+              loader: less-loader
+              options:
+                sourceMap: true
+        - use:
+            - loader: vue-style-loader
+              options: *ref_1
+            - loader: css-loader
+              options: *ref_4
+            - *ref_6
+            - *ref_7
+    - test: !<tag:yaml.org,2002:js/regexp> /\.sass$/i
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /module/
+          use:
+            - loader: vue-style-loader
+              options: *ref_1
+            - loader: css-loader
+              options: *ref_3
+            - &ref_8
+              loader: postcss-loader
+              options:
+                sourceMap: true
+                plugins:
+                  - !<tag:yaml.org,2002:js/function> |-
+                    function(styles, result) {
+                        const state = {
+                          importedFiles: {},
+                          hashFiles: {},
+                        }
+
+                        if (styles.source && styles.source.input && styles.source.input.file) {
+                          state.importedFiles[styles.source.input.file] = {}
+                        }
+
+                        if (options.plugins && !Array.isArray(options.plugins)) {
+                          throw new Error("plugins option must be an array")
+                        }
+
+                        return parseStyles(result, styles, options, state, []).then(bundle => {
+                          applyRaws(bundle)
+                          applyMedia(bundle)
+                          applyStyles(bundle, styles)
+                        })
+                      }
+                  - !<tag:yaml.org,2002:js/function> |-
+                    function(styles, result) {
+                            const opts = result.opts;
+                            const from = opts.from ? path.dirname(opts.from) : '.';
+                            const to = opts.to ? path.dirname(opts.to) : from;
+
+                            styles.walkDecls((decl) =>
+                                declProcessor(from, to, options, result, decl)
+                            );
+                        }
+                  - !<tag:yaml.org,2002:js/function> |-
+                    (root, result) => {
+                        // polyfills run in execution order
+                        const polyfills = supportedFeatures.reduce((promise, feature) => promise.then(() => feature.plugin(result.root, result)), Promise.resolve()).then(() => stagedAutoprefixer(result.root, result)).then(() => {
+                          if (Object(opts).exportTo) {
+                            writeToExports(sharedOpts.exportTo, opts.exportTo);
+                          }
+                        });
+                        return polyfills;
+                      }
+                order: presetEnvAndCssnanoLast
+            - &ref_9
+              loader: sass-loader
+              options:
+                sassOptions:
+                  indentedSyntax: true
+                sourceMap: true
+        - use:
+            - loader: vue-style-loader
+              options: *ref_1
+            - loader: css-loader
+              options: *ref_4
+            - *ref_8
+            - *ref_9
+    - test: !<tag:yaml.org,2002:js/regexp> /\.scss$/i
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /module/
+          use:
+            - loader: vue-style-loader
+              options: *ref_1
+            - loader: css-loader
+              options: *ref_3
+            - &ref_10
+              loader: postcss-loader
+              options:
+                sourceMap: true
+                plugins:
+                  - !<tag:yaml.org,2002:js/function> |-
+                    function(styles, result) {
+                        const state = {
+                          importedFiles: {},
+                          hashFiles: {},
+                        }
+
+                        if (styles.source && styles.source.input && styles.source.input.file) {
+                          state.importedFiles[styles.source.input.file] = {}
+                        }
+
+                        if (options.plugins && !Array.isArray(options.plugins)) {
+                          throw new Error("plugins option must be an array")
+                        }
+
+                        return parseStyles(result, styles, options, state, []).then(bundle => {
+                          applyRaws(bundle)
+                          applyMedia(bundle)
+                          applyStyles(bundle, styles)
+                        })
+                      }
+                  - !<tag:yaml.org,2002:js/function> |-
+                    function(styles, result) {
+                            const opts = result.opts;
+                            const from = opts.from ? path.dirname(opts.from) : '.';
+                            const to = opts.to ? path.dirname(opts.to) : from;
+
+                            styles.walkDecls((decl) =>
+                                declProcessor(from, to, options, result, decl)
+                            );
+                        }
+                  - !<tag:yaml.org,2002:js/function> |-
+                    (root, result) => {
+                        // polyfills run in execution order
+                        const polyfills = supportedFeatures.reduce((promise, feature) => promise.then(() => feature.plugin(result.root, result)), Promise.resolve()).then(() => stagedAutoprefixer(result.root, result)).then(() => {
+                          if (Object(opts).exportTo) {
+                            writeToExports(sharedOpts.exportTo, opts.exportTo);
+                          }
+                        });
+                        return polyfills;
+                      }
+                order: presetEnvAndCssnanoLast
+            - &ref_11
+              loader: sass-loader
+              options:
+                sourceMap: true
+        - use:
+            - loader: vue-style-loader
+              options: *ref_1
+            - loader: css-loader
+              options: *ref_4
+            - *ref_10
+            - *ref_11
+    - test: !<tag:yaml.org,2002:js/regexp> /\.styl(us)?$/i
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /module/
+          use:
+            - loader: vue-style-loader
+              options: *ref_1
+            - loader: css-loader
+              options: *ref_3
+            - &ref_12
+              loader: postcss-loader
+              options:
+                sourceMap: true
+                plugins:
+                  - !<tag:yaml.org,2002:js/function> |-
+                    function(styles, result) {
+                        const state = {
+                          importedFiles: {},
+                          hashFiles: {},
+                        }
+
+                        if (styles.source && styles.source.input && styles.source.input.file) {
+                          state.importedFiles[styles.source.input.file] = {}
+                        }
+
+                        if (options.plugins && !Array.isArray(options.plugins)) {
+                          throw new Error("plugins option must be an array")
+                        }
+
+                        return parseStyles(result, styles, options, state, []).then(bundle => {
+                          applyRaws(bundle)
+                          applyMedia(bundle)
+                          applyStyles(bundle, styles)
+                        })
+                      }
+                  - !<tag:yaml.org,2002:js/function> |-
+                    function(styles, result) {
+                            const opts = result.opts;
+                            const from = opts.from ? path.dirname(opts.from) : '.';
+                            const to = opts.to ? path.dirname(opts.to) : from;
+
+                            styles.walkDecls((decl) =>
+                                declProcessor(from, to, options, result, decl)
+                            );
+                        }
+                  - !<tag:yaml.org,2002:js/function> |-
+                    (root, result) => {
+                        // polyfills run in execution order
+                        const polyfills = supportedFeatures.reduce((promise, feature) => promise.then(() => feature.plugin(result.root, result)), Promise.resolve()).then(() => stagedAutoprefixer(result.root, result)).then(() => {
+                          if (Object(opts).exportTo) {
+                            writeToExports(sharedOpts.exportTo, opts.exportTo);
+                          }
+                        });
+                        return polyfills;
+                      }
+                order: presetEnvAndCssnanoLast
+            - &ref_13
+              loader: stylus-loader
+              options:
+                sourceMap: true
+        - use:
+            - loader: vue-style-loader
+              options: *ref_1
+            - loader: css-loader
+              options: *ref_4
+            - *ref_12
+            - *ref_13
+    - test: !<tag:yaml.org,2002:js/regexp> /\.(png|jpe?g|gif|svg|webp)$/i
+      use:
+        - loader: url-loader
+          options:
+            limit: 1000
+            name: '[path][name].[ext]'
+    - test: !<tag:yaml.org,2002:js/regexp> /\.(woff2?|eot|ttf|otf)(\?.*)?$/i
+      use:
+        - loader: url-loader
+          options:
+            limit: 1000
+            name: '[path][name].[ext]'
+    - test: !<tag:yaml.org,2002:js/regexp> /\.(webm|mp4|ogv)$/i
+      use:
+        - loader: file-loader
+          options:
+            name: '[path][name].[ext]'
+plugins:
+  - watchOffset: 11000
+  - {}
+  - filter: !<tag:yaml.org,2002:js/function> warn => !filters.some(ignoreFilter => ignoreFilter(warn))
+  - profile: false
+    handler: !<tag:yaml.org,2002:js/function> |-
+      (percent, message, ...details) => {
+            this.updateProgress(percent, message, details);
+          }
+    modulesCount: 500
+    showEntries: false
+    showModules: true
+    showActiveModules: true
+    options:
+      name: server
+      color: orange
+      reporters:
+        - basic
+        - fancy
+        - profile
+        - stats
+      reporter: &ref_14
+        change: !<tag:yaml.org,2002:js/function> |-
+          (_, { shortPath }) => {
+                    if (!this.isServer) {
+                      nuxt.callHook('bundler:change', shortPath);
+                    }
+                  }
+        done: !<tag:yaml.org,2002:js/function> |-
+          (buildContext) => {
+                    if (buildContext.hasErrors) {
+                      nuxt.callHook('bundler:error');
+                    }
+                  }
+        allDone: !<tag:yaml.org,2002:js/function> |-
+          () => {
+                    nuxt.callHook('bundler:done');
+                  }
+        progress: !<tag:yaml.org,2002:js/function> |-
+          progress ({ statesArray }) {
+                    nuxt.callHook('bundler:progress', statesArray);
+                  }
+      basic: false
+      fancy: true
+      profile: false
+      stats: false
+    reporters:
+      - {}
+      - *ref_14
+  - options:
+      filename: server.manifest.json
+  - definitions:
+      process.env.NODE_ENV: '"development"'
+      process.mode: '"development"'
+      process.static: false
+      process.env.VUE_ENV: '"server"'
+      process.browser: false
+      process.client: false
+      process.server: true
+      process.modern: false
+resolve:
+  extensions:
+    - .wasm
+    - .mjs
+    - .js
+    - .json
+    - .vue
+    - .jsx
+  alias:
+    ~~: /Users/patarapolw/GitHubProjects/deepfind/packages/nuxt-sample
+    '@@': /Users/patarapolw/GitHubProjects/deepfind/packages/nuxt-sample
+    '~': /Users/patarapolw/GitHubProjects/deepfind/packages/nuxt-sample
+    '@': /Users/patarapolw/GitHubProjects/deepfind/packages/nuxt-sample
+    assets: /Users/patarapolw/GitHubProjects/deepfind/packages/nuxt-sample/assets
+    static: /Users/patarapolw/GitHubProjects/deepfind/packages/nuxt-sample/static
+    vue-meta: >-
+      /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-meta/dist/vue-meta.common.js
+  modules: &ref_15
+    - node_modules
+    - >-
+      /Users/patarapolw/GitHubProjects/deepfind/node_modules/nuxt/bin/node_modules
+    - /Users/patarapolw/GitHubProjects/deepfind/node_modules/nuxt/node_modules
+    - /Users/patarapolw/GitHubProjects/deepfind/node_modules
+    - /Users/patarapolw/GitHubProjects/node_modules
+    - /Users/patarapolw/node_modules
+    - /Users/node_modules
+    - /node_modules
+    - >-
+      /Users/patarapolw/GitHubProjects/deepfind/packages/nuxt-sample/node_modules
+  mainFields:
+    - main
+    - module
+resolveLoader:
+  modules: *ref_15

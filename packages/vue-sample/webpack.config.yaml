@@ -1,0 +1,847 @@
+mode: development
+context: /Users/patarapolw/GitHubProjects/deepfind/packages/vue-sample
+devtool: cheap-module-eval-source-map
+node:
+  setImmediate: false
+  process: mock
+  dgram: empty
+  fs: empty
+  net: empty
+  tls: empty
+  child_process: empty
+output:
+  path: /Users/patarapolw/GitHubProjects/deepfind/packages/vue-sample/dist
+  filename: 'js/[name].js'
+  publicPath: /
+  chunkFilename: 'js/[name].js'
+  globalObject: '(typeof self !== ''undefined'' ? self : this)'
+resolve:
+  alias:
+    '@': /Users/patarapolw/GitHubProjects/deepfind/packages/vue-sample/src
+    vue$: vue/dist/vue.runtime.esm.js
+  extensions:
+    - .mjs
+    - .js
+    - .jsx
+    - .vue
+    - .json
+    - .wasm
+  modules:
+    - node_modules
+    - /Users/patarapolw/GitHubProjects/deepfind/packages/vue-sample/node_modules
+    - >-
+      /Users/patarapolw/GitHubProjects/deepfind/node_modules/@vue/cli-service/node_modules
+resolveLoader:
+  modules:
+    - node_modules
+    - /Users/patarapolw/GitHubProjects/deepfind/packages/vue-sample/node_modules
+    - >-
+      /Users/patarapolw/GitHubProjects/deepfind/node_modules/@vue/cli-service/node_modules
+module:
+  noParse: !<tag:yaml.org,2002:js/regexp> /^(vue|vue-router|vuex|vuex-router-sync)$/
+  rules:
+    - test: !<tag:yaml.org,2002:js/regexp> /\.vue$/
+      use:
+        - loader: >-
+            /Users/patarapolw/GitHubProjects/deepfind/node_modules/cache-loader/dist/cjs.js
+          options:
+            cacheDirectory: >-
+              /Users/patarapolw/GitHubProjects/deepfind/packages/vue-sample/node_modules/.cache/vue-loader
+            cacheIdentifier: 0994aa9b
+        - loader: >-
+            /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-loader/lib/index.js
+          options:
+            compilerOptions:
+              whitespace: condense
+            cacheDirectory: >-
+              /Users/patarapolw/GitHubProjects/deepfind/packages/vue-sample/node_modules/.cache/vue-loader
+            cacheIdentifier: 0994aa9b
+    - test: !<tag:yaml.org,2002:js/regexp> /\.(png|jpe?g|gif|webp)(\?.*)?$/
+      use:
+        - loader: >-
+            /Users/patarapolw/GitHubProjects/deepfind/node_modules/url-loader/dist/cjs.js
+          options:
+            limit: 4096
+            fallback:
+              loader: file-loader
+              options:
+                name: 'img/[name].[hash:8].[ext]'
+    - test: !<tag:yaml.org,2002:js/regexp> /\.(svg)(\?.*)?$/
+      use:
+        - loader: >-
+            /Users/patarapolw/GitHubProjects/deepfind/node_modules/file-loader/dist/cjs.js
+          options:
+            name: 'img/[name].[hash:8].[ext]'
+    - test: !<tag:yaml.org,2002:js/regexp> /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/
+      use:
+        - loader: >-
+            /Users/patarapolw/GitHubProjects/deepfind/node_modules/url-loader/dist/cjs.js
+          options:
+            limit: 4096
+            fallback:
+              loader: file-loader
+              options:
+                name: 'media/[name].[hash:8].[ext]'
+    - test: !<tag:yaml.org,2002:js/regexp> /\.(woff2?|eot|ttf|otf)(\?.*)?$/i
+      use:
+        - loader: >-
+            /Users/patarapolw/GitHubProjects/deepfind/node_modules/url-loader/dist/cjs.js
+          options:
+            limit: 4096
+            fallback:
+              loader: file-loader
+              options:
+                name: 'fonts/[name].[hash:8].[ext]'
+    - test: !<tag:yaml.org,2002:js/regexp> /\.css$/
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /module/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+                modules:
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: &ref_0
+                  - !<tag:yaml.org,2002:js/function> |-
+                    function creator() {
+                        var transformer = initializer.apply(void 0, arguments);
+                        transformer.postcssPlugin = name;
+                        transformer.postcssVersion = new _processor.default().version;
+                        return transformer;
+                      }
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /\?vue/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+        - test: !<tag:yaml.org,2002:js/regexp> /\.module\.\w+$/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+                modules:
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+        - use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+    - test: !<tag:yaml.org,2002:js/regexp> /\.p(ost)?css$/
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /module/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+                modules:
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /\?vue/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+        - test: !<tag:yaml.org,2002:js/regexp> /\.module\.\w+$/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+                modules:
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+        - use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+    - test: !<tag:yaml.org,2002:js/regexp> /\.scss$/
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /module/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+                modules:
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: sass-loader
+              options:
+                sourceMap: false
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /\?vue/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: sass-loader
+              options:
+                sourceMap: false
+        - test: !<tag:yaml.org,2002:js/regexp> /\.module\.\w+$/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+                modules:
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: sass-loader
+              options:
+                sourceMap: false
+        - use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: sass-loader
+              options:
+                sourceMap: false
+    - test: !<tag:yaml.org,2002:js/regexp> /\.sass$/
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /module/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+                modules:
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: sass-loader
+              options:
+                sourceMap: false
+                sassOptions: &ref_1
+                  indentedSyntax: true
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /\?vue/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: sass-loader
+              options:
+                sourceMap: false
+                sassOptions: *ref_1
+        - test: !<tag:yaml.org,2002:js/regexp> /\.module\.\w+$/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+                modules:
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: sass-loader
+              options:
+                sourceMap: false
+                sassOptions: *ref_1
+        - use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: sass-loader
+              options:
+                sourceMap: false
+                sassOptions: *ref_1
+    - test: !<tag:yaml.org,2002:js/regexp> /\.less$/
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /module/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+                modules:
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: less-loader
+              options:
+                sourceMap: false
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /\?vue/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: less-loader
+              options:
+                sourceMap: false
+        - test: !<tag:yaml.org,2002:js/regexp> /\.module\.\w+$/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+                modules:
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: less-loader
+              options:
+                sourceMap: false
+        - use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: less-loader
+              options:
+                sourceMap: false
+    - test: !<tag:yaml.org,2002:js/regexp> /\.styl(us)?$/
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /module/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+                modules:
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: stylus-loader
+              options:
+                sourceMap: false
+                preferPathResolver: webpack
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /\?vue/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: stylus-loader
+              options:
+                sourceMap: false
+                preferPathResolver: webpack
+        - test: !<tag:yaml.org,2002:js/regexp> /\.module\.\w+$/
+          use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+                modules:
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: stylus-loader
+              options:
+                sourceMap: false
+                preferPathResolver: webpack
+        - use:
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/vue-style-loader/index.js
+              options:
+                sourceMap: false
+                shadowMode: false
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/css-loader/dist/cjs.js
+              options:
+                sourceMap: false
+                importLoaders: 2
+            - loader: >-
+                /Users/patarapolw/GitHubProjects/deepfind/node_modules/postcss-loader/src/index.js
+              options:
+                sourceMap: false
+                plugins: *ref_0
+            - loader: stylus-loader
+              options:
+                sourceMap: false
+                preferPathResolver: webpack
+    - test: !<tag:yaml.org,2002:js/regexp> /\.pug$/
+      oneOf:
+        - resourceQuery: !<tag:yaml.org,2002:js/regexp> /^\?vue/
+          use:
+            - loader: pug-plain-loader
+        - use:
+            - loader: raw-loader
+            - loader: pug-plain-loader
+optimization:
+  splitChunks:
+    cacheGroups:
+      vendors:
+        name: chunk-vendors
+        test: !<tag:yaml.org,2002:js/regexp> '/[\\\/]node_modules[\\\/]/'
+        priority: -10
+        chunks: initial
+      common:
+        name: chunk-common
+        minChunks: 2
+        priority: -20
+        chunks: initial
+        reuseExistingChunk: true
+  minimizer:
+    - options:
+        test: !<tag:yaml.org,2002:js/regexp> /\.m?js(\?.*)?$/i
+        chunkFilter: !<tag:yaml.org,2002:js/function> () => true
+        warningsFilter: !<tag:yaml.org,2002:js/function> () => true
+        extractComments: false
+        sourceMap: true
+        cache: true
+        cacheKeys: !<tag:yaml.org,2002:js/function> defaultCacheKeys => defaultCacheKeys
+        parallel: true
+        include: !<tag:yaml.org,2002:js/undefined> ''
+        exclude: !<tag:yaml.org,2002:js/undefined> ''
+        minify: !<tag:yaml.org,2002:js/undefined> ''
+        terserOptions:
+          compress:
+            arrows: false
+            collapse_vars: false
+            comparisons: false
+            computed_props: false
+            hoist_funs: false
+            hoist_props: false
+            hoist_vars: false
+            inline: false
+            loops: false
+            negate_iife: false
+            properties: false
+            reduce_funcs: false
+            reduce_vars: false
+            switches: false
+            toplevel: false
+            typeofs: false
+            booleans: true
+            if_return: true
+            sequences: true
+            unused: true
+            conditionals: true
+            dead_code: true
+            evaluate: true
+          mangle:
+            safari10: true
+plugins:
+  - {}
+  - definitions:
+      process.env:
+        NODE_ENV: '"development"'
+        BASE_URL: '"/"'
+  - options: {}
+    pathCache: {}
+    fsOperations: 0
+    primed: false
+  - compilationSuccessInfo: {}
+    onErrors: !<tag:yaml.org,2002:js/undefined> ''
+    shouldClearConsole: true
+    formatters:
+      - !<tag:yaml.org,2002:js/function> |-
+        function format (errors) {
+          return formatErrors(errors.filter((e) => (
+            e.type === 'module-not-found'
+          )));
+        }
+      - !<tag:yaml.org,2002:js/function> |-
+        function format(errors, type) {
+          const lintErrors = errors.filter(e => e.type === 'lint-error');
+          if (lintErrors.length > 0) {
+            const flatten = (accum, curr) => accum.concat(curr);
+            return concat(
+              lintErrors
+                .map(error => displayError(error))
+                .reduce(flatten, []),
+              infos
+            )
+          }
+
+          return [];
+        }
+      - !<tag:yaml.org,2002:js/function> |-
+        function format(errors, type) {
+          return errors
+            .filter(isDefaultError)
+            .reduce((accum, error) => (
+              accum.concat(displayError(type, error))
+            ), []);
+        }
+      - !<tag:yaml.org,2002:js/function> |-
+        errors => {
+          errors = errors.filter(e => e.shortMessage)
+          if (errors.length) {
+            return errors.map(e => e.shortMessage)
+          }
+        }
+    transformers:
+      - !<tag:yaml.org,2002:js/function> |-
+        function transform(error) {
+          if (isBabelSyntaxError(error)) {
+            return Object.assign({}, error, {
+              message: cleanStackTrace(cleanMessage(error.message) + '\n'),
+              severity: 1000,
+              name: 'Syntax Error',
+            });
+          }
+
+          return error;
+        }
+      - !<tag:yaml.org,2002:js/function> |-
+        function transform(error) {
+          const webpackError = error.webpackError;
+          if (isModuleNotFoundError(error)) {
+            const dependency = webpackError.dependencies[0];
+            const module = dependency.request || dependency.options.request;
+            return Object.assign({}, error, {
+              message: `Module not found ${module}`,
+              type: TYPE,
+              severity: 900,
+              module,
+              name: 'Module not found'
+            });
+          }
+
+          return error;
+        }
+      - !<tag:yaml.org,2002:js/function> |-
+        function transform(error) {
+          if (isEslintError(error)) {
+            return Object.assign({}, error, {
+              name: 'Lint error',
+              type: 'lint-error',
+            });
+          }
+
+          return error;
+        }
+      - !<tag:yaml.org,2002:js/function> |-
+        error => {
+          if (error.webpackError) {
+            const message = typeof error.webpackError === 'string'
+              ? error.webpackError
+              : error.webpackError.message || ''
+            for (const { re, msg, type } of rules) {
+              const match = message.match(re)
+              if (match) {
+                return Object.assign({}, error, {
+                  // type is necessary to avoid being printed as defualt error
+                  // by friendly-error-webpack-plugin
+                  type,
+                  shortMessage: msg(error, match)
+                })
+              }
+            }
+            // no match, unknown webpack error without a message.
+            // friendly-error-webpack-plugin fails to handle this.
+            if (!error.message) {
+              return Object.assign({}, error, {
+                type: 'unknown-webpack-error',
+                shortMessage: message
+              })
+            }
+          }
+          return error
+        }
+    previousEndTimes: {}
+  - options:
+      template: >-
+        /Users/patarapolw/GitHubProjects/deepfind/packages/vue-sample/public/index.html
+      templateParameters: !<tag:yaml.org,2002:js/function> |-
+        (compilation, assets, pluginOptions) => {
+                // enhance html-webpack-plugin's built in template params
+                let stats
+                return Object.assign({
+                  // make stats lazy as it is expensive
+                  get webpack () {
+                    return stats || (stats = compilation.getStats().toJson())
+                  },
+                  compilation: compilation,
+                  webpackConfig: compilation.options,
+                  htmlWebpackPlugin: {
+                    files: assets,
+                    options: pluginOptions
+                  }
+                }, resolveClientEnv(options, true /* raw */))
+              }
+      filename: index.html
+      hash: false
+      inject: true
+      compile: true
+      favicon: false
+      minify: false
+      cache: true
+      showErrors: true
+      chunks: all
+      excludeChunks: []
+      chunksSortMode: auto
+      meta: {}
+      title: Webpack App
+      xhtml: false
+  - options:
+      rel: preload
+      include: initial
+      excludeHtmlNames: &ref_2 []
+      fileBlacklist:
+        - !<tag:yaml.org,2002:js/regexp> /\.map$/
+        - !<tag:yaml.org,2002:js/regexp> /hot-update\.js$/
+  - options:
+      rel: prefetch
+      include: asyncChunks
+      excludeHtmlNames: *ref_2
+      fileBlacklist:
+        - !<tag:yaml.org,2002:js/regexp> /\.map/
+  - patterns:
+      - from: /Users/patarapolw/GitHubProjects/deepfind/packages/vue-sample/public
+        to: /Users/patarapolw/GitHubProjects/deepfind/packages/vue-sample/dist
+        toType: dir
+        ignore:
+          - .DS_Store
+          - glob: index.html
+            matchBase: false
+    options: {}
+  - options: {}
+    multiStep: !<tag:yaml.org,2002:js/undefined> ''
+    fullBuildTimeout: 200
+    requestTimeout: 10000
+  - profile: false
+    handler: !<tag:yaml.org,2002:js/undefined> ''
+    modulesCount: 500
+    showEntries: false
+    showModules: true
+    showActiveModules: true
+entry:
+  app:
+    - ./src/main.js

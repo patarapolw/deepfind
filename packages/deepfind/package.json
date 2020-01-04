@@ -1,6 +1,6 @@
 {
-  "name": "deepfind",
-  "version": "1.0.0",
+  "name": "@patarapolw/deepfind",
+  "version": "0.1.1",
   "main": "dist/index.js",
   "license": "MIT",
   "files": [
@@ -11,10 +11,16 @@
     "email": "patarapolw@gmail.com",
     "url": "https://www.polvcode.dev"
   },
+  "repository": "github:patarapolw/deepfind",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "postbuild": "cp ../../README.md .",
+    "prepack": "yarn build"
   },
   "devDependencies": {
     "typescript": "^3.7.4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

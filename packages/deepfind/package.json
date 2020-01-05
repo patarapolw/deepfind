@@ -1,6 +1,6 @@
 {
   "name": "@patarapolw/deepfind",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "main": "dist/index.js",
   "license": "MIT",
   "files": [
@@ -13,11 +13,17 @@
   },
   "repository": "github:patarapolw/deepfind",
   "scripts": {
+    "prebuild": "yarn test",
     "build": "tsc",
     "postbuild": "cp ../../README.md .",
-    "prepack": "yarn build"
+    "prepack": "yarn build",
+    "test": "ts-mocha src/**/*.spec.ts"
   },
   "devDependencies": {
+    "@types/expect": "^24.3.0",
+    "@types/mocha": "^5.2.7",
+    "mocha": "^6.0.0",
+    "ts-mocha": "^6.0.0",
     "typescript": "^3.7.4"
   },
   "publishConfig": {

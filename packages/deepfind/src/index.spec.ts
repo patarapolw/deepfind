@@ -4,7 +4,7 @@ import assert from 'assert'
 interface ITestSuite {
   name: string
   cond: any
-  expect: (result: any) => boolean
+  expect: (result: any[]) => boolean
   obj: any
 }
 
@@ -14,7 +14,7 @@ const testSuite: ITestSuite[] = [
     cond: {
       loader: 'raw-loader'
     },
-    expect: (r) => r.length === 1,
+    expect: (r) => r.length === 1 && r.every((r0) => typeof r0 === 'object'),
     obj: {
       a: {
         loader: 'raw-loader'
@@ -25,7 +25,7 @@ const testSuite: ITestSuite[] = [
   {
     name: 'string',
     cond: 'raw-loader',
-    expect: (r) => r.length === 2,
+    expect: (r) => r.length === 2 && r.every((r0) => typeof r0 === 'object'),
     obj: {
       a: {
         loader: 'raw-loader'
@@ -36,7 +36,7 @@ const testSuite: ITestSuite[] = [
   {
     name: 'number',
     cond: 1,
-    expect: (r) => r.length === 2,
+    expect: (r) => r.length === 2 && r.every((r0) => typeof r0 === 'object'),
     obj: {
       a: {
         loader: 1
@@ -47,7 +47,7 @@ const testSuite: ITestSuite[] = [
   {
     name: 'boolean',
     cond: false,
-    expect: (r) => r.length === 2,
+    expect: (r) => r.length === 2 && r.every((r0) => typeof r0 === 'object'),
     obj: {
       a: {
         loader: false
@@ -58,7 +58,7 @@ const testSuite: ITestSuite[] = [
   {
     name: 'null',
     cond: null,
-    expect: (r) => r.length === 2,
+    expect: (r) => r.length === 2 && r.every((r0) => typeof r0 === 'object'),
     obj: {
       a: {
         loader: null
@@ -69,7 +69,7 @@ const testSuite: ITestSuite[] = [
   {
     name: 'undefined',
     cond: undefined,
-    expect: (r) => r.length === 2,
+    expect: (r) => r.length === 2 && r.every((r0) => typeof r0 === 'object'),
     obj: {
       a: {
         loader: undefined

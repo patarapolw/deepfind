@@ -1,0 +1,54 @@
+deepfindExact:
+  - name: Primitive in Object
+    input:
+      obj:
+        a:
+          b: 1
+      cond: 1
+    expected:
+      - b: 1
+  - name: Primitive in Array
+    input:
+      obj:
+        c:
+          a: [b, 1]
+      cond: b
+    expected:
+      - [b, 1]
+  - name: Array in Object
+    input:
+      obj:
+        c:
+          a: [b, 1]
+      cond: [b, 1]
+    expected:
+      - a: [b, 1]
+  - name: Array in Array
+    input:
+      obj:
+        c:
+          a: [[x, yy], 1]
+      cond: [x, yy]
+    expected: 
+      - [[x, yy], 1]
+  - name: Object in Object
+    input:
+      obj:
+        c:
+          a:
+            p: q
+      cond:
+        p: q
+    expected:
+      - a:
+          p: q
+  - name: Object in Array
+    input:
+      obj:
+        c:
+          a: [{p: q}, 1]
+      cond:
+        p: q
+    expected:
+      - [{p: q}, 1]
+    

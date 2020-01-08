@@ -1,0 +1,27 @@
+{
+  "name": "@patarapolw/deepfind",
+  "version": "1.1.0",
+  "repository": "github:patarapolw/deepfind",
+  "license": "MIT",
+  "author": {
+    "name": "Pacharapol Withayasakpunt",
+    "email": "patarapolw@gmail.com",
+    "url": "https://www.polvcode.dev"
+  },
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "browserify": "parcel build -d umd -o index.min.js ./browser.ts",
+    "prebuild": "yarn test",
+    "build": "tsc -p src/tsconfig.json",
+    "clone-root": "node ./clone-root.js",
+    "prepack": "yarn build && yarn browserify",
+    "test": "ts-mocha --paths -p tests/tsconfig.json tests/**/*.spec.ts"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "js-yaml": "^3.13.1"
+  }
+}
